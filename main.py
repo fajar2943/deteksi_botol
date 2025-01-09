@@ -35,9 +35,9 @@ def detect_bottles():
                 if model.names[class_id] == "bottle": #cek hanya objek botol yang terdeteksi
                     filtered_boxes.append(box)
             # Jika tidak ada botol yang terdeteksi, lanjutkan ke gambar berikutnya
-            # if not filtered_boxes:
-            #     print(f"Tidak ada botol terdeteksi di: {image_name}")
-            #     continue
+            if not filtered_boxes:
+                print(f"Tidak ada botol terdeteksi di: {image_name}")
+                continue
 
             annotated_image = result.plot(boxes=filtered_boxes)  # Gambar hasil deteksi
             cv2.imwrite(output_path, annotated_image)
